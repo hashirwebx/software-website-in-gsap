@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { useState } from 'react';
+import Navbar from "./Components/Home/Navbar/Navbar"
+import Hero from './Components/Home/Hero/Hero';
+import DigitalAgencyBanner from './Components/Home/DigitalAgencyBanner/DigitalAgencybanner';
+import DiscoverSection from './Components/Home/DiscoverSection/DiscoverSection'
+import Footer from './Components/Home/Footer/Footer';
+import ContactFooter from './Components/Home/ContactFooter/ContactFooter';
+import PortfolioSection from './Components/Home/PortfolioSection/PortfolioSection';
 function App() {
+  const [currentPage, setCurrentPage] = useState('home');
+
+  const renderContent = () => {
+    // return <div>Content for {currentPage}</div>;
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-full min-h-screen relative overflow-hidden bg-customBg">
+      
+      <Navbar onNavigate={setCurrentPage} currentPage={currentPage} />
+      <Hero />
+      <DigitalAgencyBanner />
+      <DiscoverSection />
+      <PortfolioSection />
+      {renderContent}
+      <ContactFooter />
+      <Footer />
     </div>
   );
 }
