@@ -86,10 +86,10 @@ const DiscoverSection = () => {
                         <span className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-12 block">About Us</span>
 
                         <div ref={headingRef} className="overflow-hidden mb-16">
-                            <h2 className="heading-reveal text-6xl md:text-8xl font-black font-display uppercase leading-[0.85] text-dark">
+                            <h2 className="heading-reveal text-6xl md:text-6xl font-black font-display uppercase leading-[0.85] text-dark">
                                 Discover
                             </h2>
-                            <h2 className="heading-reveal text-6xl md:text-8xl font-black font-display uppercase leading-[0.85] text-dark">
+                            <h2 className="heading-reveal text-6xl md:text-6xl font-black font-display uppercase leading-[0.85] text-dark">
                                 Our <span className="text-[#FF4081]">Agency</span>
                             </h2>
                         </div>

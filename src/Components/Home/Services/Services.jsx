@@ -3,10 +3,11 @@ import { ArrowUpRight, Plus } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
+import "./../../Styles/Styles.css"
+import LiquidButton from '../../Styles/LiquidButton'
 gsap.registerPlugin(ScrollTrigger);
 
-const Services = () => {
+const Services = (onNavigate) => {
     const containerRef = useRef(null);
     const headerRef = useRef(null);
 
@@ -120,7 +121,7 @@ const Services = () => {
 
                 {/* Section Header */}
                 <div ref={headerRef} className="mb-24 overflow-hidden">
-                    <h2 className="text-5xl md:text-8xl font-display font-black text-dark uppercase tracking-tight leading-[0.85]">
+                    <h2 className="text-6xl md:text-6xl font-display font-black text-dark uppercase tracking-tight leading-[0.85]">
                         <span className="header-word inline-block mr-4 md:mr-8">WE</span>
                         <span className="header-word inline-block mr-4 md:mr-8">GENERATE</span>
                         <span className="header-word inline-block text-accent mr-4 md:mr-8">UNIQUE</span>
@@ -186,9 +187,24 @@ const Services = () => {
                         START YOUR <br className="md:hidden" /> <span className="text-transparent" style={{ WebkitTextStroke: '1.5px rgb(53, 54, 57)' }}>NEXT</span> PROJECT
                     </h2>
                     <div className="flex justify-center">
-                        <button className="group relative overflow-hidden bg-dark text-white px-16 py-6 rounded-full font-bold uppercase text-xs tracking-widest transition-all hover:pr-20">
-                            <span className="relative z-10">Contact Us Now</span>
-                            <ArrowUpRight size={18} className="absolute right-8 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all" />
+                        <button
+                            onClick={() => onNavigate('contact')}
+
+                        >
+                            <span className="relative z-10">
+                                <LiquidButton
+                                    // eslint-disable-next-line no-undef
+                                    onClick={() => handleNav('contact')}
+                                    variant="dark"
+                                    className="shadow-lg"
+                                >
+                                    Contact Us Now
+                                </LiquidButton>
+                                <ArrowUpRight size={18} className="absolute right-8 top-1/2 translate-y-1/2 opacity-0 group-hover:opacity-100 transition-all" />
+                            </span>
+                            
+
+
                         </button>
                     </div>
                 </div>

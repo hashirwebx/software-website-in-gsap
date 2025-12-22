@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
-
+import "../../Styles/Styles.css"
+import LiquidButton from '../../Styles/LiquidButton';
 const Navbar = ({ onNavigate, currentPage }) => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
@@ -18,7 +19,6 @@ const Navbar = ({ onNavigate, currentPage }) => {
         setMobileOpen(false);
         window.scrollTo(0, 0);
     };
-
     return (
         <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'}`}>
             <div className="container mx-auto px-6 flex justify-between items-center">
@@ -60,10 +60,20 @@ const Navbar = ({ onNavigate, currentPage }) => {
                     <button onClick={() => handleNav('blog')} className={`${currentPage === 'blog' ? 'text-accent' : ''} hover:text-accent transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-accent after:left-0 after:-bottom-1 after:transition-all hover:after:w-full text-[20px]`}>Blog</button>
                     <button onClick={() => handleNav('contact')} className={`${currentPage === 'contact' ? 'text-accent' : ''} hover:text-accent transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-accent after:left-0 after:-bottom-1 after:transition-all hover:after:w-full text-[20px]`}>Contact</button>
                 </div>
-                <div className="hidden md:block">
+                {/* <div className="hidden md:block">
                     <button onClick={() => handleNav('contact')} className="bg-accent hover:bg-primary text-white text-sm font-bold uppercase tracking-wider px-10 py-6 rounded-full transition-transform transform hover:scale-105 shadow-lg text-lg">
                         Get in Touch
                     </button>
+                </div> */}
+                {/* Liquid Get in Touch Button */}
+                <div className="hidden md:block">
+                    <LiquidButton
+                        onClick={() => handleNav('contact')}
+                        variant="dark"
+                        className="shadow-lg"
+                    >
+                        Get in Touch
+                    </LiquidButton>
                 </div>
                 <button className="md:hidden text-dark" onClick={() => setMobileOpen(!mobileOpen)}>
                     {mobileOpen ? <X size={24} /> : <Menu size={24} />}

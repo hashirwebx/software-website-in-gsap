@@ -3,6 +3,8 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './PortfolioSection.css'
+import "./../../Styles/Styles.css"
+import LiquidButton from '../../Styles/LiquidButton';
 gsap.registerPlugin(ScrollTrigger);
 
 const PortfolioSection = () => {
@@ -104,8 +106,8 @@ const PortfolioSection = () => {
                     <span className="inline-block mr-3">and</span>
                     <span className="inline-block mr-3">make</span>
                     <span className="inline-block mr-3">the</span>
-                    <span className="text-accent inline-block mr-3">impossible</span>
-                    <span className="text-accent inline-block mr-3">possible.</span>
+                    <span className="inline-block mr-3">impossible</span>
+                    <span className="inline-block mr-3">possible.</span>
                     <br className="hidden md:block" />
                     <span className="inline-block mr-3">Choose</span>
                     <span className="text-purple-600 inline-block">Pixy</span>
@@ -121,10 +123,18 @@ const PortfolioSection = () => {
                         We've been working for several years to build a portfolio that truly reflects our passion for innovation and storytelling.
                     </p>
 
-                    <button className="button group relative bg-accent text-white font-black rounded-full uppercase text-xs hover:bg-dark transition-all duration-300 transform hover:scale-30 active:scale-20">
-                        <span className=" relative">View Portfolio</span>
-                        <div className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 blur-md transition-opacity"></div>
-                    </button>
+                    {/* <button className="liquid-btn group relative px-12 py-5 bg-accent text-white font-black rounded-full uppercase text-xs tracking-widest shadow-2xl transition-all duration-300 transform hover:scale-110 active:scale-95 btn-light-mask"> */}
+                    <span className=" relative px-12 py-5 z-10">
+                        <LiquidButton
+                            // eslint-disable-next-line no-undef
+                            onClick={() => handleNav('contact')}
+                            variant="dark"
+                            className="shadow-lg">
+                            View Portfolio
+                        </LiquidButton>
+                    </span>
+                    <div className="liquid-wave-inner" style={{ background: '#1a1a1a' }}></div>
+
                 </div>
             </div>
         </section>

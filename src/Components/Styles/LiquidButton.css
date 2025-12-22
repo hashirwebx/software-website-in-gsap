@@ -1,0 +1,76 @@
+/* LiquidButton base styles */
+.liquid-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
+}
+
+.liquid-button:active {
+  transform: translateY(1px);
+}
+
+/* Variants */
+.liquid-button--dark {
+  background: #0f172a; /* slate-900 */
+  color: #ffffff;
+}
+
+.liquid-button--accent {
+  background: #f97316; /* orange-500 fallback */
+  color: #0b1020;
+}
+
+.liquid-button--light {
+  background: #ffffff;
+  color: #0b1020;
+  box-shadow: inset 0 0 0 1px rgba(2,6,23,0.08);
+}
+
+.liquid-button--stroke {
+  background: transparent;
+  color: #0f172a;
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+
+/* Flair (animated blob) */
+.button__flair {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  /* The filter id is provided by the inline SVG in the component */
+  filter: url(#liquid-goo-filter);
+  z-index: 0;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.35), rgba(255,255,255,0.05));
+}
+
+/* Label sits above the flair */
+.button__label {
+  position: relative;
+  z-index: 1;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+/* Optional hover elevation */
+.liquid-button:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12), 0 6px 10px rgba(0,0,0,0.06);
+}
