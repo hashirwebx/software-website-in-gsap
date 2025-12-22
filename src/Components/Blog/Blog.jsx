@@ -80,7 +80,7 @@ const Blog = () => {
             title: "10 ESSENTIAL TOOLS EVERY GRAPHIC DESIGNER SHOULD MASTER",
             desc: "Are you passionate about design and interested in pursuing a career as a graphic designer? Graphic design is a dynamic...",
             image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Green leaf texture
-            btnColor: "bg-[#FF4081]", // Pink
+            btnColor: "bg-gray-200", // Pink
             btnTextColor: "text-white"
         },
         {
@@ -96,10 +96,7 @@ const Blog = () => {
 
     return (
         <div ref={containerRef} className="bg-customBg pt-32 pb-0 min-h-screen">
-
-            {/* --- HERO HEADER --- */}
             <section className="container mx-auto px-6 mb-24 text-center relative">
-                {/* Decorative 3D elements (CSS/SVG placeholders) */}
                 <div className="blog-shape absolute top-0 left-10 w-32 h-32 opacity-30 pointer-events-none hidden md:block">
                     <img src="https://spicaware.com/wp-content/uploads/2024/12/shapes-5.png" alt="" className="w-full" />
                 </div>
@@ -110,7 +107,6 @@ const Blog = () => {
                 <div className="relative z-10">
                     <div className="mb-4 flex justify-center">
                         <div className="relative">
-                            {/* 3D letters effect placeholder */}
                             <span className="absolute -top-6 -left-8 text-4xl text-gray-300 transform -rotate-12 opacity-50">✎</span>
                         </div>
                     </div>
@@ -127,7 +123,6 @@ const Blog = () => {
                 </div>
             </section>
 
-            {/* --- POPULAR PUBLICATIONS --- */}
             <section className="container mx-auto px-6 mb-32">
                 <div className="flex items-center gap-4 mb-12 fade-in-blog">
                     <h2 className="text-4xl md:text-5xl font-black font-display uppercase text-dark">
@@ -140,10 +135,9 @@ const Blog = () => {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    {/* Card 1 */}
                     <div className="group bg-transparent fade-in-blog">
                         <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden mb-6 shadow-md group-hover:shadow-2xl transition-all duration-500">
-                            <img src={articles[0].image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                            <img src={articles[0].image} alt="" className="w-full h-full group-hover:scale-110 transition-transform duration-700" />
                             <div className="absolute top-6 left-6 flex items-center gap-4">
                                 <span className="bg-dark text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">{articles[0].tag}</span>
                                 <span className="bg-white text-dark px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">{articles[0].date}</span>
@@ -156,7 +150,6 @@ const Blog = () => {
                         </button>
                     </div>
 
-                    {/* Card 2 */}
                     <div className="group bg-transparent fade-in-blog">
                         <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden mb-6 shadow-md group-hover:shadow-2xl transition-all duration-500">
                             <img src={articles[1].image} alt="" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
@@ -164,7 +157,6 @@ const Blog = () => {
                                 <span className="bg-dark text-white px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">{articles[1].tag}</span>
                                 <span className="bg-white text-dark px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">{articles[1].date}</span>
                             </div>
-                            {/* Purple circle icon overlay from design */}
                             <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-accent rounded-full flex items-center justify-center text-white">
                                 <ArrowRight size={20} className="rotate-45" />
                             </div>
@@ -178,7 +170,6 @@ const Blog = () => {
                 </div>
             </section>
 
-            {/* --- LATEST PUBLICATIONS --- */}
             <section className="container mx-auto px-6 mb-32">
                 <h2 className="text-4xl md:text-5xl font-black font-display uppercase mb-12 fade-in-blog text-dark">
                     Latest <span className="text-[#FF4081]">Publications</span>
@@ -197,7 +188,6 @@ const Blog = () => {
                             <div className="md:col-span-7">
                                 <h3 className="text-2xl md:text-4xl font-black font-display uppercase leading-tight mb-4 text-dark">{article.title}</h3>
                                 <p className="text-gray-500 text-sm leading-relaxed mb-6 max-w-xl">{article.desc}</p>
-                                {/* Pink pill button */}
                                 <button className="bg-[#FF4081] text-white px-8 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest hover:bg-dark transition-colors shadow-lg shadow-pink-200">
                                     Read More
                                 </button>
@@ -206,7 +196,6 @@ const Blog = () => {
                     ))}
                 </div>
 
-                {/* Pagination */}
                 <div className="flex justify-center gap-4 mt-20 fade-in-blog">
                     <button className="w-10 h-10 rounded-full bg-accent text-white font-bold flex items-center justify-center shadow-lg">1</button>
                     <button className="w-10 h-10 rounded-full bg-gray-200 text-gray-500 font-bold flex items-center justify-center hover:bg-gray-300">2</button>
@@ -214,16 +203,13 @@ const Blog = () => {
                 </div>
             </section>
 
-            {/* --- SUBSCRIBE SECTION --- */}
             <section className="bg-customBg py-0">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
-                    {/* Left Image */}
                     <div className="relative h-[400px] lg:h-[600px] overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Team" className="w-full h-full object-cover grayscale contrast-125" />
                         <div className="absolute inset-0 bg-gray-200/20"></div>
                     </div>
 
-                    {/* Right Form */}
                     <div className="flex flex-col justify-center p-12 lg:p-24 bg-customBg">
                         <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-4">Newsletter</h4>
                         <h2 className="text-5xl md:text-7xl font-black font-display uppercase text-gray-400 mb-2">

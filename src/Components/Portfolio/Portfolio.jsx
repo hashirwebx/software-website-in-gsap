@@ -1,23 +1,118 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { ArrowUpRight, X, ArrowRight } from 'lucide-react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import LiquidButton from '../Styles/LiquidButton';
-import { JumpingText } from '../JumpingText';
+
 gsap.registerPlugin(ScrollTrigger);
+
 
 const Portfolio = () => {
     const containerRef = useRef(null);
-    const textRef = useRef(null);
-    const sectionRef = useRef(null);
+    const modalRef = useRef(null);
+    const modalContentRef = useRef(null);
+    const [selectedProject, setSelectedProject] = useState(null);
 
+    const projects = [
+        {
+            id: 1,
+            title: "VANMOOF APP",
+            category: "UX/UI Design",
+            image: "https://images.unsplash.com/photo-1616469829581-73993eb86b02?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            description: "A complete redesign of the VanMoof e-bike companion app, focusing on seamless connectivity and intuitive ride tracking.",
+            client: "VanMoof",
+            year: "2024",
+            span: "row-span-2 col-span-1"
+        },
+        {
+            id: 2,
+            title: "B-STATIONARY",
+            category: "Branding",
+            image: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            description: "Visual identity system for a modern architecture firm, balancing brutalist aesthetics with digital fluidity.",
+            client: "B-Studio",
+            year: "2024",
+            span: "row-span-1 col-span-1"
+        },
+        {
+            id: 3,
+            title: "YOUNG DESIGN '23",
+            category: "Identity",
+            image: "https://images.unsplash.com/photo-1572044162444-ad6021105507?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            description: "Official promotional campaign and poster series for the 2023 Young Design Festival in Milan.",
+            client: "Milan Art Council",
+            year: "2023",
+            span: "row-span-1 col-span-1"
+        },
+        {
+            id: 4,
+            title: "NIKE AIR MAX",
+            category: "E-Commerce",
+            image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d33?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            description: "An immersive shopping experience for the latest Nike collection, featuring 3D product visualization.",
+            client: "Nike Global",
+            year: "2023",
+            span: "row-span-1 col-span-1"
+        },
+        {
+            id: 5,
+            title: "DELICIA BOXES",
+            category: "Product Design",
+            image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            description: "Luxury chocolate packaging that uses tactile materials and holographic foils.",
+            client: "Delicia De Ruma",
+            year: "2024",
+            span: "row-span-1 col-span-1"
+        },
+        {
+            id: 6,
+            title: "TOTE SERIES",
+            category: "Packaging",
+            image: "https://images.unsplash.com/photo-1544816155-12df9643f363?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            description: "Eco-conscious packaging and merchandise design for a sustainable fashion brand.",
+            client: "EcoWear",
+            year: "2023",
+            span: "row-span-2 col-span-1"
+        },
+        {
+            id: 7,
+            title: "WEB ECOSYSTEM",
+            category: "Web Design",
+            image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            description: "A secure, lightning-fast financial dashboard designed for high-frequency traders.",
+            client: "TechFlow",
+            year: "2024",
+            span: "row-span-1 col-span-1"
+        },
+        {
+            id: 8,
+            title: "CATALOGUE '24",
+            category: "Print Design",
+            image: "https://images.unsplash.com/photo-1606836591695-4d58a73ef1e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            description: "Editorial layout and high-end printing for a luxury furniture brand's annual collection.",
+            client: "Luxe Home",
+            year: "2024",
+            span: "row-span-2 col-span-1"
+        },
+        {
+            id: 9,
+            title: "FINTECH INTERFACE",
+            category: "App Design",
+            image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            description: "Mobile-first banking experience focusing on accessibility and visual clarity.",
+            client: "Nuvem Bank",
+            year: "2024",
+            span: "row-span-1 col-span-1"
+        }
+    ];
 
-    
     useGSAP(() => {
-        gsap.utils.toArray('.port-shape img').forEach((img) => {
+        // 1. Organic Floating for shapes to match the header look
+        gsap.utils.toArray('.port-deco-shape img').forEach((img) => {
             gsap.to(img, {
-                y: "random(-40, 40)",
-                x: "random(-20, 20)",
+                y: "random(-30, 30)",
+                x: "random(-15, 15)",
                 rotation: "random(-20, 20)",
                 duration: "random(4, 7)",
                 repeat: -1,
@@ -27,9 +122,10 @@ const Portfolio = () => {
             });
         });
 
-        gsap.utils.toArray('.port-shape').forEach((shape, i) => {
+        // 2. Parallax
+        gsap.utils.toArray('.port-deco-shape').forEach((shape, i) => {
             gsap.to(shape, {
-                y: (i + 1) * 80,
+                y: (i + 1) * 40,
                 ease: "none",
                 scrollTrigger: {
                     trigger: containerRef.current,
@@ -40,353 +136,162 @@ const Portfolio = () => {
             });
         });
 
-        const revealItems = gsap.utils.toArray('.port-item-reveal');
-        revealItems.forEach((item) => {
-            const img = item.querySelector('img');
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: item,
-                    start: "top 90%",
-                }
-            });
-
-            tl.fromTo(item,
-                { clipPath: "inset(100% 0% 0% 0%)", opacity: 0 },
-                { clipPath: "inset(0% 0% 0% 0%)", opacity: 1, duration: 1.5, ease: "expo.inOut" }
-            );
-
-            if (img) {
-                tl.fromTo(img, { scale: 1.4 }, { scale: 1, duration: 2.5, ease: "expo.out" }, 0);
-            }
-        });
-
-        gsap.to(".diagonal-marquee-1", {
-            xPercent: -30,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".marquee-trigger",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
-            }
-        });
-
-        gsap.to(".diagonal-marquee-2", {
-            xPercent: 30,
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".marquee-trigger",
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
-            }
-        });
-
-        gsap.from(".logo-item", {
+        // 3. Staggered reveal for grid items
+        gsap.from(".portfolio-grid-item", {
             opacity: 0,
-            y: 50,
+            y: 100,
             stagger: 0.1,
             duration: 1.2,
-            ease: "power3.out",
+            ease: "power4.out",
             scrollTrigger: {
-                trigger: ".logo-grid",
-                start: "top 95%"
+                trigger: ".portfolio-grid-container",
+                start: "top 90%"
             }
-        });
-
-        // Heading animation inside hook
-        const headingParts = textRef.current ? textRef.current.querySelectorAll('span, .text-segment') : [];
-        if (headingParts && headingParts.length) {
-            gsap.from(headingParts, {
-                y: 50,
-                opacity: 0,
-                rotateX: -45,
-                stagger: 0.1,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: textRef.current,
-                    start: "top 80%",
-                    toggleActions: "play none none reverse"
-                }
-            });
-        }
-
-        // Manifesto footer entrance
-        gsap.from(".manifesto-footer", {
-            y: 40,
-            opacity: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-                trigger: ".manifesto-footer",
-                start: "top 90%",
-            }
-        });
-
-        // Background X decoration parallax
-        gsap.to(".bg-deco-x", {
-            y: -100,
-            rotate: 180,
-            scrollTrigger: {
-                trigger: containerRef.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: 1
-            }
-        });
-
-        // Button hover micro-interaction
-        const buttons = gsap.utils.toArray(".button");
-        buttons.forEach((item) => {
-            const span = item.querySelector("span");
-            if (!span) return;
-            const tl = gsap.timeline({ paused: true });
-
-            tl.to(span, { duration: 0.2, yPercent: -150, ease: "power2.in" });
-            tl.set(span, { yPercent: 150 });
-            tl.to(span, { duration: 0.2, yPercent: 0 });
-
-            item.addEventListener("mouseenter", () => tl.play(0));
         });
 
     }, { scope: containerRef });
 
-    return (
-        <div ref={containerRef} className="bg-customBg pt-32 md:pt-48 pb-0 relative overflow-hidden" id="portfolio">
+    const openModal = (project) => {
+        setSelectedProject(project);
+        gsap.to(modalRef.current, { display: 'flex', opacity: 1, duration: 0.4, ease: "power2.out" });
+        gsap.fromTo(modalContentRef.current,
+            { scale: 0.95, y: 50, opacity: 0 },
+            { scale: 1, y: 0, opacity: 1, duration: 0.6, delay: 0.1, ease: "back.out(1.2)" }
+        );
+    };
 
-            <div className="port-shape absolute top-[5%] left-[-10%] w-[35vw] max-w-[450px] z-0 opacity-60">
+    const closeModal = () => {
+        gsap.to(modalContentRef.current, { scale: 0.95, y: 30, opacity: 0, duration: 0.3, ease: "power2.in" });
+        gsap.to(modalRef.current, {
+            opacity: 0, duration: 0.4, ease: "power2.in", onComplete: () => {
+                setSelectedProject(null);
+                gsap.set(modalRef.current, { display: 'none' });
+            }
+        });
+    };
+
+    const ProjectCard = ({ project }) => (
+        <div className={`portfolio-grid-item group relative overflow-hidden cursor-pointer rounded-sm shadow-lg hover:shadow-2xl transition-all duration-500 bg-white ${project.span}`} onClick={() => openModal(project)}>
+            <div className="w-full h-full relative overflow-hidden">
+                <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:brightness-90"
+                />
+
+                {/* Professional Split-Bar Hover Overlay (Screenshot Matching) */}
+                <div className="absolute bottom-0 left-0 w-full flex translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-20">
+                    <div className="flex-1 bg-[#2C2C2C] p-5 md:p-8 flex flex-col justify-center">
+                        <h3 className="text-white text-2xl md:text-4xl font-black font-display uppercase tracking-tight leading-none mb-1">
+                            {project.title}
+                        </h3>
+                        <p className="text-gray-400 text-[8px] font-bold uppercase tracking-[0.2em]">
+                            {project.category}
+                        </p>
+                    </div>
+                    <div className="bg-[#7F00FF] w-20 md:w-36 flex flex-col items-center justify-center p-4 transition-colors hover:bg-white hover:text-[#7F00FF] group/btn">
+                        <ArrowUpRight size={36} className="mb-1 transition-transform group-hover/btn:translate-x-2 group-hover/btn:-translate-y-2" />
+                        <span className="text-[8px] font-black uppercase tracking-widest whitespace-nowrap">READ MORE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+
+    return (
+        <div ref={containerRef} className="bg-customBg pt-32 md:pt-48 pb-32 relative overflow-hidden" id="portfolio-page">
+
+            {/* --- HEADER ASSETS (REPLICATING SCREENSHOT) --- */}
+            <div className="port-deco-shape absolute top-[5%] left-[2%] w-[15vw] max-w-[200px] z-0 opacity-60">
                 <img src="https://spicaware.com/wp-content/uploads/2024/12/shapes-1.png" alt="" />
             </div>
-            <div className="port-shape absolute top-[2%] right-[-12%] w-[40vw] max-w-[550px] z-0 opacity-60">
+            <div className="port-deco-shape absolute top-[2%] right-[5%] w-[18vw] max-w-[250px] z-0 opacity-60">
                 <img src="https://spicaware.com/wp-content/uploads/2024/12/shapes-2.png" alt="" />
-            </div>
-            <div className="port-shape absolute top-[22%] left-[18%] w-[12vw] max-w-[150px] z-0 opacity-30">
-                <img src="https://spicaware.com/wp-content/uploads/2024/12/shapes-5.png" alt="" />
             </div>
 
             <div className="container mx-auto px-6 relative z-10">
-                <div className="text-center mb- flex flex-col items-center">
-                    <h1 className="text-[12vw] md:text-[8vw] font-black font-display uppercase tracking-tighter text-dark leading-none relative">
 
-                        <JumpingText
-                            text="our best"
-                            hoverColor="hover:text-blue-400"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 1 }} />
-                        <span className="text-[6vw] text-[#FF4081]">WORKS</span>
+                {/* --- HEADER --- */}
+                <div className="text-center mb-24 md:mb-40 flex flex-col items-center">
+                    <h1 className="text-[14vw] md:text-[10vw] font-black font-display uppercase tracking-tighter text-dark leading-none relative">
+                        OUR BEST <span className="text-[#FF4081]">WORKS</span>
                     </h1>
-                    <div className="port-shape w-24 h-24 mt-[-40px] opacity-40">
+                    <div className="port-deco-shape w-16 h-16 mt-[-30px] opacity-40">
                         <img src="https://spicaware.com/wp-content/uploads/2024/12/shapes-5.png" alt="" />
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 mb-64">
-                    <div className="md:col-span-4 flex flex-col pt-12">
-                        <div className="port-item-reveal relative h-[800px] md:h-[1050px] rounded-sm overflow-hidden shadow-2xl bg-[#0a0a0a]">
-                            <img
-                                src="https://images.unsplash.com/photo-1616469829581-73993eb86b02?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                                alt="VanMoof iPhone App"
-                                className="w-full h-full object-cover"
-                            />
-                            <div className="absolute inset-0 bg-dark/10"></div>
-                        </div>
-                        <div className="port-item-reveal relative h-[450px] rounded-sm overflow-hidden shadow-xl mt-12 bg-white">
-                            <img
-                                src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                                alt="Nike Shoe App"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    </div>
-                    <div className="md:col-span-4 flex flex-col gap-12 pt-32">
-                        <div className="port-item-reveal relative h-[650px] rounded-sm overflow-hidden shadow-xl bg-[#F4F4F4]">
-                            <img
-                                src="https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
-                                alt="Stationery Branding"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                        <div className="port-item-reveal relative h-[550px] rounded-sm overflow-hidden shadow-xl bg-white">
-                            <img
-                                src="https://images.unsplash.com/photo-1544816155-12df9643f363?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                                alt="Branded Tote Bag"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    </div>
-                    <div className="md:col-span-4 flex flex-col gap-12">
-                        <div className="port-item-reveal relative h-[480px] rounded-sm overflow-hidden shadow-xl bg-[#c8e6c9]">
-                            <img
-                                src="https://images.unsplash.com/photo-1572044162444-ad6021105507?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                                alt="Young Design 2023 Poster"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                        <div className="port-item-reveal relative h-[350px] rounded-sm overflow-hidden shadow-xl bg-[#fdf2e9]">
-                            <img
-                                src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                                alt="Delicia De Ruma Box"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                        <div className="port-item-reveal relative h-[520px] rounded-sm overflow-hidden shadow-xl bg-[#1b5e20]">
-                            <img
-                                src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                                alt="Financial UI App"
-                                className="w-full h-full object-cover"
-                            />
-                        </div>
-                    </div>
+                {/* --- PROFESSIONAL MASONRY GRID --- */}
+                <div className="portfolio-grid-container grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 auto-rows-[250px] md:auto-rows-[350px]">
+                    {projects.map((project) => (
+                        <ProjectCard key={project.id} project={project} />
+                    ))}
                 </div>
-                <section ref={sectionRef} className="py-24 md:py-32 bg-customBg flex flex-col items-center justify-center text-center px-6 relative overflow-hidden">
-                    <div className="bg-deco-x absolute top-20 right-10 md:right-32 text-[15rem] font-black text-gray-200/40 select-none pointer-events-none font-display">
-                        X
-                    </div>
-                    <div className="absolute -bottom-10 -left-10 w-64 h-64 border-[40px] border-accent/5 rounded-full blur-xl pointer-events-none"></div>
 
-                    <div className="max-w-6xl relative z-10">
-                        <p className="text-[12px] font-black uppercase text-gray-400 mb-12 tracking-[0.4em] fade-in-up">Explore Our Agency</p>
-
-                        <h2 ref={textRef} className="text-4xl md:text-4xl lg:text-6xl font-black text-dark uppercase leading-[1.1] font-display">
-                            <span className="inline-block mr-3">Spicaware</span>
-                            <span className="inline-block mr-3">is</span>
-                            <span className="inline-block mr-3">a</span>
-                            <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-[#59BB8C]">
-                                <span className="text-black inline-block mr-3">creative</span>
-                            </span>
-                            <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-[#935E2D]">
-                                <span className="text-white inline-block mr-3">agency</span>
-                            </span>
-                            <span className="inline-block mr-3">that</span>
-                            <span className="inline-block mr-3">transforms</span>
-                            <span className="text-black inline-block mr-3">ideas</span>
-                            <span className="inline-block mr-3">into</span>
-                            <span className="inline-block mr-3">masterpieces.</span>
-                            <br className="hidden md:block" />
-                            <span className="inline-block mr-3">We</span>
-                            <span className="inline-block mr-3">craft</span>
-                            <span className="relative inline-block before:absolute before:-inset-1 before:block before:-skew-y-3 before:bg-gray-400">
-                                <span className="text-black inline-block mr-3">design</span>
-                            </span>
-                            <span className="inline-block mr-3">magic,</span>
-                            <span className="inline-block mr-3">breathe</span>
-                            <span className="inline-block mr-3">new</span>
-                            <span className="inline-block mr-3">life</span>
-                            <span className="inline-block mr-3">into</span>
-                            <span className="inline-block mr-3">brands,</span>
-                            <span className="inline-block mr-3">and</span>
-                            <span className="inline-block mr-3">make</span>
-                            <span className="inline-block mr-3">the</span>
-                            <span className="text-accent inline-block mr-3">impossible</span>
-                            <span className="text-accent inline-block mr-3">possible.</span>
-                            <br className="hidden md:block" />
-                            <span className="inline-block mr-3">Choose</span>
-                            <span className="text-purple-600 inline-block">Pixy</span>
-                            <span className="inline-block ml-3">because</span>
-                            <span className="inline-block ml-3">we</span>
-                            <span className="inline-block ml-3">are</span>
-                            <span className="inline-block ml-3">worth</span>
-                            <span className="inline-block ml-3">it!</span>
-                        </h2>
-
-                        <div className="manifesto-footer mt-20 flex flex-col items-center">
-                            <p className="text-xs md:text-sm text-gray-500 max-w-sm mb-12 leading-loose font-medium">
-                                We've been working for several years to build a portfolio that truly reflects our passion for innovation and storytelling.
-                            </p>
-
-                            <button>
-                                <span className="relative z-10">
-                                    <LiquidButton
-                                        // eslint-disable-next-line no-undef
-                                        onClick={() => handleNav('portfolio')}
-                                        variant="dark"
-                                        className="shadow-lg"
-                                    >
-                                        View Portfolio
-                                    </LiquidButton>
-                                </span>
-                                <div className="liquid-wave-inner" style={{ background: '#1a1a1a' }}></div>
-                            </button>
-                        </div>
-                    </div>
-                </section>
-            </div>
-
-            {/* --- DIAGONAL MARQUEE STRIPS (MATCHING SS) --- */}
-            <div className="marquee-trigger relative py-60 overflow-hidden bg-white/5">
-                <div className="absolute top-1/2 left-[-15%] w-[130%] -translate-y-1/2 flex flex-col gap-12 rotate-[-5deg] z-0">
-                    {/* White Strip */}
-                    <div className="diagonal-marquee-1 whitespace-nowrap bg-white py-10 border-y-2 border-dark flex items-center shadow-xl">
-                        {Array(10).fill("").map((_, i) => (
-                            <span key={i} className="text-5xl md:text-7xl font-black font-display uppercase text-dark px-16">
-                                CUTTING-EDGE TECHNOLOGY • TAILORED STRATEGIES • PROVEN TRACK RECORD • EXPERT GUIDANCE •
-                            </span>
-                        ))}
-                    </div>
-                    <div className="diagonal-marquee-2 whitespace-nowrap bg-[#7F00FF] py-10 shadow-2xl flex items-center translate-x-[-15%]">
-                        {Array(10).fill("").map((_, i) => (
-                            <span key={i} className="text-5xl md:text-7xl font-black font-display uppercase text-white px-16">
-                                SUSTAINABLE PRACTICES • GLOBAL REACH • SATISFACTION GUARANTEED • INDUSTRY EXPERIENCE • COST EFFECTIVE •
-                            </span>
-                        ))}
-                    </div>
-                </div>
-                <div className="port-shape absolute bottom-[-10%] left-[8%] w-[32vw] max-w-[450px] z-10 opacity-80">
-                    <img src="https://spicaware.com/wp-content/uploads/2024/12/shapes-1.png" alt="" />
+                {/* --- SUBTITLE TEXT --- */}
+                <div className="mt-32 text-center max-w-3xl mx-auto">
+                    <p className="text-[12px] font-black uppercase tracking-[0.5em] text-gray-400 mb-8">Crafted with precision</p>
+                    <p className="text-lg md:text-2xl font-bold text-gray-600 leading-relaxed italic">
+                        "We take the time to understand your goals, audience, and vision — then tailor our approach to ensure your message connects meaningfully."
+                    </p>
                 </div>
             </div>
-            <div className="container mx-auto px-6 pt-72 pb-96 logo-grid">
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-16 md:gap-32 items-center justify-items-center opacity-40 grayscale hover:grayscale-0 transition-all duration-1000">
 
-                    <div className="logo-item flex flex-col items-center gap-4">
-                        <div className="w-16 h-16 border-[2.5px] border-dark flex items-center justify-center p-3">
-                            <div className="w-full h-full bg-dark/20 grid grid-cols-2 gap-2">
-                                <div className="bg-dark/60"></div><div className="bg-dark/60"></div>
-                                <div className="bg-dark/60"></div><div className="bg-dark/60"></div>
+            {/* --- PROJECT MODAL --- */}
+            <div
+                ref={modalRef}
+                className="fixed inset-0 z-[100] hidden items-center justify-center p-6 md:p-12 bg-dark/95 backdrop-blur-xl opacity-0"
+                onClick={closeModal}
+            >
+                <button
+                    className="absolute top-8 right-8 w-14 h-14 rounded-full bg-white/10 hover:bg-[#FF4081] text-white flex items-center justify-center transition-all duration-300 z-[110]"
+                    onClick={(e) => { e.stopPropagation(); closeModal(); }}
+                >
+                    <X size={28} />
+                </button>
+
+                <div
+                    ref={modalContentRef}
+                    className="bg-white w-full max-w-6xl rounded-sm overflow-hidden flex flex-col md:flex-row shadow-2xl relative"
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    {selectedProject && (
+                        <>
+                            <div className="md:w-1/2 h-[350px] md:h-auto overflow-hidden bg-dark">
+                                <img src={selectedProject.image} alt={selectedProject.title} className="w-full h-full object-cover" />
                             </div>
-                        </div>
-                        <span className="text-[10px] font-black uppercase tracking-widest text-dark">minimal logo</span>
-                    </div>
-
-                    <div className="logo-item text-3xl font-display font-black leading-none text-center tracking-tight">
-                        MI<br />NI<br />MAL
-                    </div>
-
-                    <div className="logo-item flex flex-col items-center group">
-                        <div className="w-16 h-16 rounded-full border-[2.5px] border-dark flex items-center justify-center relative">
-                            <div className="w-10 h-10 rounded-full border border-dark border-dashed animate-spin-slow"></div>
-                        </div>
-                        <span className="text-[10px] font-black uppercase tracking-widest mt-4 text-dark">minimal logo</span>
-                    </div>
-
-                    <div className="logo-item flex flex-col items-center">
-                        <div className="text-6xl font-display font-black leading-none">M</div>
-                        <div className="w-12 h-[3px] bg-dark -mt-1"></div>
-                        <span className="text-[10px] font-black uppercase tracking-widest mt-3 text-dark">minimal</span>
-                    </div>
-
-                    <div className="logo-item text-5xl font-display font-black tracking-tighter">
-                        M/L
-                    </div>
-
+                            <div className="md:w-1/2 p-8 md:p-20 flex flex-col justify-center bg-white">
+                                <div className="flex items-center gap-3 mb-8">
+                                    <span className="px-4 py-1.5 bg-[#FF4081] text-white rounded-full text-[9px] font-black tracking-widest uppercase">{selectedProject.category}</span>
+                                    <span className="text-gray-300 text-[9px] font-black tracking-widest uppercase">{selectedProject.year}</span>
+                                </div>
+                                <h2 className="text-4xl md:text-7xl font-black font-display uppercase leading-none text-dark mb-8 tracking-tighter">
+                                    {selectedProject.title}
+                                </h2>
+                                <div className="grid grid-cols-2 gap-8 mb-8 py-8 border-y border-gray-100">
+                                    <div>
+                                        <p className="text-[10px] font-black uppercase text-gray-400 tracking-widest mb-1">Client</p>
+                                        <p className="text-sm font-bold text-dark">{selectedProject.client}</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-[10px] font-black uppercase text-gray-400 tracking-widest mb-1">Year</p>
+                                        <p className="text-sm font-bold text-dark">{selectedProject.year}</p>
+                                    </div>
+                                </div>
+                                <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-12">
+                                    {selectedProject.description}
+                                </p>
+                                <LiquidButton variant="dark" className="self-start px-12 py-5" onClick={closeModal}>
+                                    Launch Case Study <ArrowRight size={18} className="ml-2" />
+                                </LiquidButton>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
 
-            <style dangerouslySetInnerHTML={{
-                __html: `
-        @keyframes spin-slow {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-        }
-        .animate-spin-slow {
-        animation: spin-slow 15s linear infinite;
-        }
-    `}} />
         </div>
     );
 };
-
 
 export default Portfolio;
