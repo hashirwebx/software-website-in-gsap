@@ -10,7 +10,6 @@ const Blog = () => {
     const containerRef = useRef(null);
 
     useGSAP(() => {
-        // Note: Header Animation (.blog-title) is handled globally in App.tsx
         gsap.to(".blog-shape", {
             y: -20,
             duration: 4,
@@ -20,7 +19,6 @@ const Blog = () => {
             stagger: 0.8
         });
 
-        // Reveal images on scroll (Clip Path Reveal)
         const revealImages = gsap.utils.toArray('.reveal-img-blog');
         revealImages.forEach((imgWrapper: any) => {
             const img = imgWrapper.querySelector('img');
@@ -44,8 +42,6 @@ const Blog = () => {
                 );
             }
         });
-
-        // Fade in elements
         const fadeElements = gsap.utils.toArray('.fade-in-blog');
         fadeElements.forEach((el: any) => {
             gsap.fromTo(el,
@@ -80,7 +76,7 @@ const Blog = () => {
             title: "10 ESSENTIAL TOOLS EVERY GRAPHIC DESIGNER SHOULD MASTER",
             desc: "Are you passionate about design and interested in pursuing a career as a graphic designer? Graphic design is a dynamic...",
             image: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80", // Green leaf texture
-            btnColor: "bg-gray-200", // Pink
+            btnColor: "bg-gray-200",
             btnTextColor: "text-white"
         },
         {

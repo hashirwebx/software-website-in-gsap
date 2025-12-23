@@ -153,11 +153,8 @@ const About = () => {
             <div className="fixed right-6 top-1/2 -translate-y-1/2 w-[1px] h-48 bg-gray-300 z-50 overflow-hidden hidden md:block">
                 <div ref={progressRef} className="w-full h-full bg-accent origin-top scale-y-0"></div>
             </div>
-
-            {/* --- PART 1: HEADER SECTION --- */}
             <div className="pt-32 pb-12 md:pt-48 md:pb-24 container mx-auto px-6 relative min-h-[85vh] flex flex-col justify-center">
 
-                {/* Abstract Shapes - Nested structure for cleaner animation */}
                 <div className="about-shape absolute top-[5%] left-[-2%] w-[25vw] max-w-[350px] z-0 opacity-40 pointer-events-none">
                     <img src="https://spicaware.com/wp-content/uploads/2024/12/shapes-1.png" alt="" className="w-full h-auto" />
                 </div>
@@ -219,8 +216,6 @@ const About = () => {
                     </div>
                 </div>
             </div>
-
-            {/* --- PART 2: DISCOVER CONTENT --- */}
             <div className="bg-customBg py-24 md:py-40 relative">
                 <div className="container mx-auto px-6">
                     <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">

@@ -2,7 +2,7 @@
 const Footer = ({ simple = false }) => {
     return (
         <>
-            <div id="contact" className="bg-dark text-white pt-24 pb-8 border-t border-gray-800">
+            <div id="contact" className="bg-[#2E2F32] text-white pt-24 pb-8 border-t border-gray-800">
                 <div className="container mx-auto px-6">
                     {!simple && (
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">

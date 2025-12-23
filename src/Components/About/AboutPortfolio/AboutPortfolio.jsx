@@ -7,7 +7,7 @@ const Portfolio = () => {
     const projects = [
         { title: "SHOE STORE", category: "App Mockup", img: "https://images.unsplash.com/photo-1616469829581-73993eb86b02?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80", color: "#A8D5BA" },
         { title: "DELICIA DE RUMA", category: "Packaging", img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80", color: "#90BE6D" },
-        { title: "YOUNG DESIGN 2023", category: "Branding", img: "https://images.unsplash.com/photo-1572044162444-ad6021105507?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80", color: "#84C59E" },
+        { title: "YOUNG DESIGN 2023", category: "Branding", img: "https://images.unsplash.com/photo-1710799885122-428e63eff691?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", color: "#84C59E" },
         { title: "MOCKUP SET", category: "Stationery", img: "https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80", color: "#52B788" }
     ];
     const handleNav = (page) => {

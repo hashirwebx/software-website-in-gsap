@@ -29,7 +29,7 @@ const Portfolio = () => {
             id: 2,
             title: "B-STATIONARY",
             category: "Branding",
-            image: "https://images.unsplash.com/photo-1586717791821-3f44a563eb4c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            image: "https://images.unsplash.com/photo-1526597796581-efa2fc6087ea?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVuJTIwYW5kJTIwcGFwZXIlMjBzdGF0YWlvbmFyeXxlbnwwfHwwfHx8MA%3D%3D",
             description: "Visual identity system for a modern architecture firm, balancing brutalist aesthetics with digital fluidity.",
             client: "B-Studio",
             year: "2024",
@@ -39,7 +39,7 @@ const Portfolio = () => {
             id: 3,
             title: "YOUNG DESIGN '23",
             category: "Identity",
-            image: "https://images.unsplash.com/photo-1572044162444-ad6021105507?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            image: "https://images.unsplash.com/photo-1710799885122-428e63eff691?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             description: "Official promotional campaign and poster series for the 2023 Young Design Festival in Milan.",
             client: "Milan Art Council",
             year: "2023",
@@ -49,7 +49,7 @@ const Portfolio = () => {
             id: 4,
             title: "NIKE AIR MAX",
             category: "E-Commerce",
-            image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d33?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            image: "https://images.unsplash.com/photo-1749392505295-b9a71f5d9b4b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8TklLRSUyMEFJUiUyME1BWCUyMEUtQ29tbWVyY2V8ZW58MHx8MHx8fDA%3D",
             description: "An immersive shopping experience for the latest Nike collection, featuring 3D product visualization.",
             client: "Nike Global",
             year: "2023",
@@ -89,7 +89,7 @@ const Portfolio = () => {
             id: 8,
             title: "CATALOGUE '24",
             category: "Print Design",
-            image: "https://images.unsplash.com/photo-1606836591695-4d58a73ef1e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+            image: "https://images.unsplash.com/photo-1549298222-1c31e8915347?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Q0FUQUxPR1VFJTIwJzI0JTIwUHJpbnQlMjBEZXNpZ258ZW58MHx8MHx8fDA%3D",
             description: "Editorial layout and high-end printing for a luxury furniture brand's annual collection.",
             client: "Luxe Home",
             year: "2024",
@@ -108,7 +108,7 @@ const Portfolio = () => {
     ];
 
     useGSAP(() => {
-        // 1. Organic Floating for shapes to match the header look
+
         gsap.utils.toArray('.port-deco-shape img').forEach((img) => {
             gsap.to(img, {
                 y: "random(-30, 30)",
@@ -122,7 +122,6 @@ const Portfolio = () => {
             });
         });
 
-        // 2. Parallax
         gsap.utils.toArray('.port-deco-shape').forEach((shape, i) => {
             gsap.to(shape, {
                 y: (i + 1) * 40,
@@ -136,7 +135,6 @@ const Portfolio = () => {
             });
         });
 
-        // 3. Staggered reveal for grid items
         gsap.from(".portfolio-grid-item", {
             opacity: 0,
             y: 100,
@@ -179,7 +177,6 @@ const Portfolio = () => {
                     className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:brightness-90"
                 />
 
-                {/* Professional Split-Bar Hover Overlay (Screenshot Matching) */}
                 <div className="absolute bottom-0 left-0 w-full flex translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-20">
                     <div className="flex-1 bg-[#2C2C2C] p-5 md:p-8 flex flex-col justify-center">
                         <h3 className="text-white text-2xl md:text-4xl font-black font-display uppercase tracking-tight leading-none mb-1">
@@ -201,7 +198,6 @@ const Portfolio = () => {
     return (
         <div ref={containerRef} className="bg-customBg pt-32 md:pt-48 pb-32 relative overflow-hidden" id="portfolio-page">
 
-            {/* --- HEADER ASSETS (REPLICATING SCREENSHOT) --- */}
             <div className="port-deco-shape absolute top-[5%] left-[2%] w-[15vw] max-w-[200px] z-0 opacity-60">
                 <img src="https://spicaware.com/wp-content/uploads/2024/12/shapes-1.png" alt="" />
             </div>
@@ -211,7 +207,6 @@ const Portfolio = () => {
 
             <div className="container mx-auto px-6 relative z-10">
 
-                {/* --- HEADER --- */}
                 <div className="text-center mb-24 md:mb-40 flex flex-col items-center">
                     <h1 className="text-[14vw] md:text-[10vw] font-black font-display uppercase tracking-tighter text-dark leading-none relative">
                         OUR BEST <span className="text-[#FF4081]">WORKS</span>
@@ -221,14 +216,12 @@ const Portfolio = () => {
                     </div>
                 </div>
 
-                {/* --- PROFESSIONAL MASONRY GRID --- */}
                 <div className="portfolio-grid-container grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 auto-rows-[250px] md:auto-rows-[350px]">
                     {projects.map((project) => (
                         <ProjectCard key={project.id} project={project} />
                     ))}
                 </div>
 
-                {/* --- SUBTITLE TEXT --- */}
                 <div className="mt-32 text-center max-w-3xl mx-auto">
                     <p className="text-[12px] font-black uppercase tracking-[0.5em] text-gray-400 mb-8">Crafted with precision</p>
                     <p className="text-lg md:text-2xl font-bold text-gray-600 leading-relaxed italic">
@@ -237,7 +230,6 @@ const Portfolio = () => {
                 </div>
             </div>
 
-            {/* --- PROJECT MODAL --- */}
             <div
                 ref={modalRef}
                 className="fixed inset-0 z-[100] hidden items-center justify-center p-6 md:p-12 bg-dark/95 backdrop-blur-xl opacity-0"

@@ -87,10 +87,7 @@ const ServiceDetail = () => {
 
    return (
       <div ref={containerRef} className="bg-customBg min-h-screen pt-32 overflow-hidden">
-
-         {/* --- HEADER --- */}
          <section className="container mx-auto px-6 text-center mb-16 relative pt-12">
-            {/* Branded Abstract Shapes */}
             <div className="detail-shape absolute top-0 left-[5%] w-48 h-48 opacity-40 pointer-events-none z-0">
                <img src="https://spicaware.com/wp-content/uploads/2024/12/shapes-1.png" alt="" className="w-full h-auto" />
             </div>
@@ -144,7 +141,6 @@ const ServiceDetail = () => {
                   </p>
                </div>
 
-               {/* Item 2 */}
                <div className="flex flex-col items-center group">
                   <div className="w-32 h-32 mb-8 relative flex items-center justify-center">
                      <div className="geo-icon w-full h-full border border-gray-400 group-hover:border-dark transition-colors duration-500"></div>
@@ -157,7 +153,6 @@ const ServiceDetail = () => {
                   </p>
                </div>
 
-               {/* Item 3 */}
                <div className="flex flex-col items-center group">
                   <div className="w-32 h-32 mb-8 relative flex items-center justify-center">
                      <div className="geo-icon w-full h-full rounded-full border border-gray-400 group-hover:border-dark transition-colors duration-500"></div>
@@ -174,12 +169,10 @@ const ServiceDetail = () => {
             </div>
          </section>
 
-         {/* --- CONTENT & PROCESS SPLIT --- */}
          <section className="bg-customBg py-24">
             <div className="container mx-auto px-6">
                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
 
-                  {/* Left Column */}
                   <div className="flex flex-col justify-between">
                      <div className="fade-in-up">
                         <p className="text-sm text-gray-500 leading-loose mb-12 text-justify">
@@ -200,7 +193,6 @@ const ServiceDetail = () => {
                         <div className="w-8 h-8 bg-accent rounded-full flex items-center justify-center text-white text-[10px]">||</div>
                      </div>
 
-                     {/* Big Number Stats */}
                      <div className="relative fade-in-up">
                         <div className="w-full h-40 bg-gray-200/50 absolute bottom-4 left-4 -z-10 rounded-sm"></div>
                         <div className="flex items-baseline">
@@ -211,7 +203,6 @@ const ServiceDetail = () => {
                      </div>
                   </div>
 
-                  {/* Right Column - Process */}
                   <div className="space-y-16 pt-12 fade-in-up">
                      <div className="group">
                         <h3 className="text-2xl md:text-3xl font-black font-display uppercase mb-6 text-gray-400 group-hover:text-accent transition-colors">
@@ -223,7 +214,6 @@ const ServiceDetail = () => {
                      </div>
 
                      <div className="space-y-16">
-                        {/* Step 2 */}
                         <div className="group">
                            <h3 className="text-2xl md:text-3xl font-black font-display uppercase mb-6 text-gray-400 group-hover:text-dark transition-colors">
                               <span className="text-[#FF4081]">02.</span> Design & Prototyping
@@ -233,7 +223,6 @@ const ServiceDetail = () => {
                            </p>
                         </div>
 
-                        {/* Step 3 */}
                         <div className="group">
                            <h3 className="text-2xl md:text-3xl font-black font-display uppercase mb-6 text-gray-400 group-hover:text-dark transition-colors">
                               <span className="text-[#FF4081]">03.</span> Development & Integration
@@ -243,7 +232,6 @@ const ServiceDetail = () => {
                            </p>
                         </div>
 
-                        {/* Step 4 */}
                         <div className="group">
                            <h3 className="text-2xl md:text-3xl font-black font-display uppercase mb-6 text-gray-400 group-hover:text-dark transition-colors">
                               <span className="text-[#FF4081]">04.</span> Testing & Launch
@@ -259,12 +247,10 @@ const ServiceDetail = () => {
             </div>
          </section>
 
-         {/* --- DARK PORTFOLIO SECTION --- */}
          <section id="dark-portfolio" className="bg-dark text-white py-32 overflow-hidden relative">
             <div className="container mx-auto px-6 relative z-10">
                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-                  {/* Left Text */}
                   <div className="portfolio-header">
                      <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-8">Portfolio</p>
                      <h2 className="text-6xl md:text-8xl font-black font-display uppercase leading-[0.85] mb-12">
@@ -275,23 +261,17 @@ const ServiceDetail = () => {
                      </button>
                   </div>
 
-                  {/* Right Images / Layout from ref */}
                   <div className="relative h-[600px] w-full">
-                     {/* Mockup Image Composition */}
                      <div className="absolute top-0 right-0 w-3/4 h-3/4 bg-gray-800 rotate-6 rounded-lg overflow-hidden shadow-2xl z-0 opacity-50"></div>
                      <div className="absolute top-10 right-10 w-3/4 h-3/4 bg-gray-200 rounded-lg overflow-hidden shadow-2xl z-10 hover:scale-105 transition-transform duration-700">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" className="w-full h-full object-cover" alt="Portfolio 1" />
                      </div>
-
-                     {/* Floating elements */}
                      <div className="absolute bottom-20 left-0 w-40 h-40 bg-gray-100 rounded-lg shadow-xl z-20 overflow-hidden hover:scale-110 transition-transform">
                         <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" className="w-full h-full object-cover" alt="Detail" />
                      </div>
                   </div>
                </div>
             </div>
-
-            {/* Background diagonal cut */}
             <div className="absolute top-0 right-0 w-1/2 h-full bg-[#1A1A1A] skew-x-12 -z-0 hidden lg:block"></div>
          </section>
 
