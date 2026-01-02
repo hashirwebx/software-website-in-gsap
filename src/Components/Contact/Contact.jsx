@@ -27,7 +27,7 @@ const ContactPage = () => {
         });
 
         // Organic Floating animation for 3D shapes
-        gsap.utils.toArray('.shape-float img').forEach((img: any) => {
+        gsap.utils.toArray('.shape-float img').forEach((img) => {
             gsap.to(img, {
                 y: "random(-15, 15)",
                 x: "random(-10, 10)",
@@ -160,6 +160,7 @@ const ContactPage = () => {
                             style={{ border: 0 }}
                             allowFullScreen
                             loading="lazy"
+                            title="Spicaware Office Location - G-11 Markaz, Islamabad"
                             className="absolute inset-0 grayscale opacity-80 hover:opacity-100 transition-opacity"
                         ></iframe>
                         <div className="absolute top-8 left-8 bg-white p-4 rounded shadow-lg max-w-xs text-dark">

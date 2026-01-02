@@ -12,6 +12,7 @@ import About from './Components/About/About';
 import AboutPortfolio from './Components/About/AboutPortfolio/AboutPortfolio';
 import ServiceDetail from './Components/ServicesDetail/ServicesDetail';
 import Blog from './Components/Blog/Blog';
+import BlogDetail from './Components/Blog/BlogDetail/BlogDetail';
 import Contact from './Components/Contact/Contact';
 import Portfolio from './Components/Portfolio/Portfolio';
 import Preloader from './Components/PreLoading/Preloading';
@@ -24,7 +25,8 @@ import Lenis from 'lenis';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('home');
-const [isLoading, setIsLoading] = useState(true);
+  const [selectedPost, setSelectedPost] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   // Sync ScrollTrigger when page content changes
   useEffect(() => {
@@ -53,7 +55,7 @@ const [isLoading, setIsLoading] = useState(true);
 
     lenis.on('scroll', ScrollTrigger.update);
 
-    const rafExecutor = (time: number) => {
+    const rafExecutor = (time) => {
       lenis.raf(time * 1000);
     };
     gsap.ticker.add(rafExecutor);
@@ -75,7 +77,8 @@ const [isLoading, setIsLoading] = useState(true);
         case 'portfolio':
           return <Portfolio/>
       case 'blog':
-        return <Blog />;
+        return <Blog onPostSelect={(post) => { setSelectedPost(post); setCurrentPage('blog-detail'); }} />;
+        case 'blog-detail': return <BlogDetail post={selectedPost} onBack={() => setCurrentPage('blog')} />;
       case 'contact':
         return <Contact />;
       case 'home':
