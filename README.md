@@ -11,6 +11,7 @@ This Website is a high-end, creative agency website. Built with a focus on **bol
 
 ## Key Features
 
+- **Pre-loading Screen**: Engaging animated loading screen with progress indicators for a professional first impression.
 - **Advanced GSAP Animations**: Parallax effects, staggered text reveals, and clip-path image transitions.
 - **Liquid "Gooey" Buttons**: Custom SVG filter-based buttons that react.
 - **Lenis Smooth Scroll**: High-performance inertial scrolling for a premium browsing experience.
