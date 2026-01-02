@@ -1,6 +1,10 @@
 # Creative Design Agency Portfolio
 
+<<<<<<< HEAD
 ![Quantumstack Cover](Screenshot%202025-12-23%20192218.png)
+=======
+![QuantumStack Cover](Screenshot%202025-12-23%20192218.png)
+>>>>>>> cafc352 (Update the Blog page)
 
 > **"Transforming Ideas into Digital Masterpieces."**
 

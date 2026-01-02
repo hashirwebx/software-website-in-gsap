@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import LiquidButton from '../Styles/LiquidButton';
+import { JumpingText } from '../JumpingText';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -208,8 +209,15 @@ const Portfolio = () => {
             <div className="container mx-auto px-6 relative z-10">
 
                 <div className="text-center mb-24 md:mb-40 flex flex-col items-center">
-                    <h1 className="text-[14vw] md:text-[10vw] font-black font-display uppercase tracking-tighter text-dark leading-none relative">
-                        OUR BEST <span className="text-[#FF4081]">WORKS</span>
+                    <h1 className="text-[14vw] md:text-[10vw] font-black font-display uppercase tracking-tighter text-dark leading-[0.8] relative">
+                                                        <JumpingText
+                                                            text="OUR BEST"
+                                                            className="text-[9vw]"
+                                                            hoverColor="hover:text-gray-400"
+                                                            initial={{ opacity: 0, y: 10 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            transition={{ duration: 1 }} />
+                                                    <span className="text-accent text-[8vw]">WORKS</span>
                     </h1>
                     <div className="port-deco-shape w-16 h-16 mt-[-30px] opacity-40">
                         <img src="https://spicaware.com/wp-content/uploads/2024/12/shapes-5.png" alt="" />

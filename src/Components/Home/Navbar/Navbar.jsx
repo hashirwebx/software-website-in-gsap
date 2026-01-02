@@ -27,8 +27,6 @@ const Navbar = ({ onNavigate, currentPage }) => {
                     <img src={Logo} alt="Spicaware logo" className="h-8 w-auto object-contain" />
                     <span className="text-[26px] font-black tracking-tight text-dark">Spicaware</span>
                 </div>
-
-
                 <div className="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wide">
                     <button onClick={() => handleNav('home')} className={`${currentPage === 'home' ? 'text-accent' : ''} hover:text-accent transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-accent after:left-0 after:-bottom-1 after:transition-all hover:after:w-full text-[20px]`}>Home</button>
                     <button onClick={() => handleNav('about')} className={`${currentPage === 'about' ? 'text-accent' : ''} hover:text-accent transition-colors relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-accent after:left-0 after:-bottom-1 after:transition-all hover:after:w-full text-[20px]`}>About Us</button>
